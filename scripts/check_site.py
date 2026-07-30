@@ -80,11 +80,23 @@ def validate_html() -> list[str]:
     return errors
 
 
+def drawio_files() -> list[Path]:
+    return sorted(set(ROOT.rglob("*.drawio")) | set(ROOT.rglob("*.drawio.svg")))
+
+
 def validate_drawio() -> list[str]:
     errors: list[str] = []
-    for diagram in sorted(ROOT.rglob("*.drawio")):
+    for diagram in drawio_files():
         try:
-            ET.parse(diagram)
+            root = ET.parse(diagram).getroot()
+            if diagram.name.endswith(".drawio.svg"):
+                embedded_xml = root.attrib.get("content")
+                if not embedded_xml:
+                    errors.append(
+                        f"{diagram.relative_to(ROOT)}: SVG has no embedded draw.io source"
+                    )
+                else:
+                    ET.fromstring(embedded_xml)
         except ET.ParseError as exc:
             errors.append(f"{diagram.relative_to(ROOT)}: invalid draw.io XML: {exc}")
     return errors
@@ -111,7 +123,7 @@ def main() -> int:
         return 1
 
     html_count = len(list(ROOT.rglob("*.html")))
-    drawio_count = len(list(ROOT.rglob("*.drawio")))
+    drawio_count = len(drawio_files())
     print(f"Site validation passed: {html_count} HTML pages, {drawio_count} draw.io source.")
     return 0
 

@@ -59,5 +59,21 @@ The workflow publishes the repository as a static site.
 
 - Images and diagrams open in a full-screen, zoomable viewer.
 - PNG, JPG, SVG, MP4, and WebM work without extra JavaScript.
+- Editable draw.io exports use the double extension `*.drawio.svg`.
 - Keep each asset beside the survey that owns it.
 - Compress large media before committing; GitHub Pages is best for short demos and figures.
+
+### Fill a subtopic image slot
+
+The Image Composition survey contains one empty frame per taxonomy leaf. To fill a frame:
+
+1. Add the image to `image-composition/assets/`.
+2. Find its `<figure class="method-image-slot is-empty">` in
+   `image-composition/index.html`.
+3. Remove `is-empty` and replace the placeholder `<div>` with an `<img>`:
+
+```html
+<figure class="method-image-slot">
+  <img src="./assets/image-pasting.png" alt="Example of image pasting" />
+</figure>
+```
