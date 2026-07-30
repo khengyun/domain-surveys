@@ -10,7 +10,7 @@
     <meta name="theme-color" content="#f7f7f3" />
     <title>Image Composition — Domain Surveys</title>
     <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="../assets/styles.css?v=20260730-2" />
+    <link rel="stylesheet" href="../assets/styles.css?v=20260730-3" />
     <script>
       (() => {
         const saved = localStorage.getItem("domain-surveys-theme");
@@ -104,8 +104,6 @@
               <a href="#video-extension" data-nav-parent="#taxonomy">Video Extension</a>
             </div>
           </div>
-          <a href="#media">Visual media</a>
-          <a href="#reading-list">Reading paths</a>
         </nav>
         <div class="rail-status">Living survey</div>
       </aside>
@@ -120,7 +118,7 @@
           </p>
           <div class="article-meta">
             <span>Living survey</span>
-            <span>18 min read</span>
+            <span>12 min read</span>
             <span>Updated 30 Jul 2026</span>
           </div>
           <div class="abstract-box">
@@ -321,13 +319,13 @@
 
         <section class="article-section" id="subtopic-gallery">
           <div class="section-label">
-            <span>02.2 · Taxonomy branches</span><span>12 image slots</span>
+            <span>02.2 · Taxonomy branches</span><span>12 visual nodes</span>
           </div>
-          <h2>One visual space for every branch.</h2>
+          <h2>Open each branch as a visual node.</h2>
           <p>
-            Each subtopic from the diagram has its own image frame below. The frames are
-            intentionally empty so method figures, comparisons, or representative results can be
-            added as the survey grows.
+            Each subtopic from the diagram is a compact node. Select one to open its image in a
+            focused dialog; until an asset is added, the dialog keeps the expected filename
+            visible.
           </p>
 
           <nav class="subtopic-jump-nav" aria-label="Jump to a subtopic">
@@ -358,48 +356,64 @@
               <span>3 subtopics</span>
             </header>
             <div class="method-list">
-              <article class="method-entry" id="image-pasting">
-                <figure class="method-image-slot is-empty">
-                  <div class="image-placeholder">
-                    <span class="placeholder-mark" aria-hidden="true">+</span>
-                    <strong>Add image</strong>
-                    <code>assets/image-pasting.*</code>
-                  </div>
-                </figure>
-                <div class="method-copy">
+              <button
+                class="method-node"
+                id="image-pasting"
+                type="button"
+                data-visual-node
+                data-node-index="A.01"
+                data-node-title="Image pasting"
+                data-node-description="Cut-and-paste, alpha masks, and copy-paste augmentation."
+                data-node-image="./assets/image-pasting.png"
+              >
+                <span class="method-node-top">
                   <span class="method-index">A.01</span>
-                  <h4>Image pasting</h4>
-                  <p>Cut-and-paste, alpha masks, and copy-paste augmentation.</p>
-                </div>
-              </article>
-              <article class="method-entry" id="image-fusion">
-                <figure class="method-image-slot is-empty">
-                  <div class="image-placeholder">
-                    <span class="placeholder-mark" aria-hidden="true">+</span>
-                    <strong>Add image</strong>
-                    <code>assets/image-fusion.*</code>
-                  </div>
-                </figure>
-                <div class="method-copy">
+                  <span class="method-node-icon" aria-hidden="true">+</span>
+                </span>
+                <span class="method-node-title">Image pasting</span>
+                <span class="method-node-description"
+                  >Cut-and-paste, alpha masks, and copy-paste augmentation.</span
+                >
+                <span class="method-node-action">Open visual <span aria-hidden="true">↗</span></span>
+              </button>
+              <button
+                class="method-node"
+                id="image-fusion"
+                type="button"
+                data-visual-node
+                data-node-index="A.02"
+                data-node-title="Image fusion"
+                data-node-description="Linear mixing and part-level fusion."
+                data-node-image="./assets/image-fusion.png"
+              >
+                <span class="method-node-top">
                   <span class="method-index">A.02</span>
-                  <h4>Image fusion</h4>
-                  <p>Linear mixing and part-level fusion.</p>
-                </div>
-              </article>
-              <article class="method-entry" id="generative-composition">
-                <figure class="method-image-slot is-empty">
-                  <div class="image-placeholder">
-                    <span class="placeholder-mark" aria-hidden="true">+</span>
-                    <strong>Add image</strong>
-                    <code>assets/generative-composition.*</code>
-                  </div>
-                </figure>
-                <div class="method-copy">
+                  <span class="method-node-icon" aria-hidden="true">+</span>
+                </span>
+                <span class="method-node-title">Image fusion</span>
+                <span class="method-node-description">Linear mixing and part-level fusion.</span>
+                <span class="method-node-action">Open visual <span aria-hidden="true">↗</span></span>
+              </button>
+              <button
+                class="method-node"
+                id="generative-composition"
+                type="button"
+                data-visual-node
+                data-node-index="A.03"
+                data-node-title="Generative composition"
+                data-node-description="GAN or diffusion insertion with identity preservation."
+                data-node-image="./assets/generative-composition.png"
+              >
+                <span class="method-node-top">
                   <span class="method-index">A.03</span>
-                  <h4>Generative composition</h4>
-                  <p>GAN or diffusion insertion with identity preservation.</p>
-                </div>
-              </article>
+                  <span class="method-node-icon" aria-hidden="true">+</span>
+                </span>
+                <span class="method-node-title">Generative composition</span>
+                <span class="method-node-description"
+                  >GAN or diffusion insertion with identity preservation.</span
+                >
+                <span class="method-node-action">Open visual <span aria-hidden="true">↗</span></span>
+              </button>
             </div>
           </section>
 
@@ -416,62 +430,86 @@
               <span>4 subtopics</span>
             </header>
             <div class="method-list">
-              <article class="method-entry" id="object-placement">
-                <figure class="method-image-slot is-empty">
-                  <div class="image-placeholder">
-                    <span class="placeholder-mark" aria-hidden="true">+</span>
-                    <strong>Add image</strong>
-                    <code>assets/object-placement.*</code>
-                  </div>
-                </figure>
-                <div class="method-copy">
+              <button
+                class="method-node"
+                id="object-placement"
+                type="button"
+                data-visual-node
+                data-node-index="B.01"
+                data-node-title="Object placement"
+                data-node-description="Location, scale, support, and semantic context."
+                data-node-image="./assets/object-placement.png"
+              >
+                <span class="method-node-top">
                   <span class="method-index">B.01</span>
-                  <h4>Object placement</h4>
-                  <p>Location, scale, support, and semantic context.</p>
-                </div>
-              </article>
-              <article class="method-entry" id="spatial-transformation">
-                <figure class="method-image-slot is-empty">
-                  <div class="image-placeholder">
-                    <span class="placeholder-mark" aria-hidden="true">+</span>
-                    <strong>Add image</strong>
-                    <code>assets/spatial-transformation.*</code>
-                  </div>
-                </figure>
-                <div class="method-copy">
+                  <span class="method-node-icon" aria-hidden="true">+</span>
+                </span>
+                <span class="method-node-title">Object placement</span>
+                <span class="method-node-description"
+                  >Location, scale, support, and semantic context.</span
+                >
+                <span class="method-node-action">Open visual <span aria-hidden="true">↗</span></span>
+              </button>
+              <button
+                class="method-node"
+                id="spatial-transformation"
+                type="button"
+                data-visual-node
+                data-node-index="B.02"
+                data-node-title="Spatial transformation"
+                data-node-description="Affine or perspective transforms, pose, view, and depth."
+                data-node-image="./assets/spatial-transformation.png"
+              >
+                <span class="method-node-top">
                   <span class="method-index">B.02</span>
-                  <h4>Spatial transformation</h4>
-                  <p>Affine or perspective transforms, pose, view, and depth.</p>
-                </div>
-              </article>
-              <article class="method-entry" id="occlusion-reasoning">
-                <figure class="method-image-slot is-empty">
-                  <div class="image-placeholder">
-                    <span class="placeholder-mark" aria-hidden="true">+</span>
-                    <strong>Add image</strong>
-                    <code>assets/occlusion-reasoning.*</code>
-                  </div>
-                </figure>
-                <div class="method-copy">
+                  <span class="method-node-icon" aria-hidden="true">+</span>
+                </span>
+                <span class="method-node-title">Spatial transformation</span>
+                <span class="method-node-description"
+                  >Affine or perspective transforms, pose, view, and depth.</span
+                >
+                <span class="method-node-action">Open visual <span aria-hidden="true">↗</span></span>
+              </button>
+              <button
+                class="method-node"
+                id="occlusion-reasoning"
+                type="button"
+                data-visual-node
+                data-node-index="B.03"
+                data-node-title="Occlusion reasoning"
+                data-node-description="Depth order, partial or full visibility, and occluder relations."
+                data-node-image="./assets/occlusion-reasoning.png"
+              >
+                <span class="method-node-top">
                   <span class="method-index">B.03</span>
-                  <h4>Occlusion reasoning</h4>
-                  <p>Depth order, partial or full visibility, and occluder relations.</p>
-                </div>
-              </article>
-              <article class="method-entry" id="foreground-extraction">
-                <figure class="method-image-slot is-empty">
-                  <div class="image-placeholder">
-                    <span class="placeholder-mark" aria-hidden="true">+</span>
-                    <strong>Add image</strong>
-                    <code>assets/foreground-extraction.*</code>
-                  </div>
-                </figure>
-                <div class="method-copy">
+                  <span class="method-node-icon" aria-hidden="true">+</span>
+                </span>
+                <span class="method-node-title">Occlusion reasoning</span>
+                <span class="method-node-description"
+                  >Depth order, partial or full visibility, and occluder relations.</span
+                >
+                <span class="method-node-action">Open visual <span aria-hidden="true">↗</span></span>
+              </button>
+              <button
+                class="method-node"
+                id="foreground-extraction"
+                type="button"
+                data-visual-node
+                data-node-index="B.04"
+                data-node-title="Foreground search &amp; extraction"
+                data-node-description="Source selection, segmentation, matting, and amodal masks."
+                data-node-image="./assets/foreground-extraction.png"
+              >
+                <span class="method-node-top">
                   <span class="method-index">B.04</span>
-                  <h4>Foreground search &amp; extraction</h4>
-                  <p>Source selection, segmentation, matting, and amodal masks.</p>
-                </div>
-              </article>
+                  <span class="method-node-icon" aria-hidden="true">+</span>
+                </span>
+                <span class="method-node-title">Foreground search &amp; extraction</span>
+                <span class="method-node-description"
+                  >Source selection, segmentation, matting, and amodal masks.</span
+                >
+                <span class="method-node-action">Open visual <span aria-hidden="true">↗</span></span>
+              </button>
             </div>
           </section>
 
@@ -488,48 +526,66 @@
               <span>3 subtopics</span>
             </header>
             <div class="method-list">
-              <article class="method-entry" id="blending">
-                <figure class="method-image-slot is-empty">
-                  <div class="image-placeholder">
-                    <span class="placeholder-mark" aria-hidden="true">+</span>
-                    <strong>Add image</strong>
-                    <code>assets/blending.*</code>
-                  </div>
-                </figure>
-                <div class="method-copy">
+              <button
+                class="method-node"
+                id="blending"
+                type="button"
+                data-visual-node
+                data-node-index="C.01"
+                data-node-title="Blending"
+                data-node-description="Alpha or Poisson blending and boundary refinement."
+                data-node-image="./assets/blending.png"
+              >
+                <span class="method-node-top">
                   <span class="method-index">C.01</span>
-                  <h4>Blending</h4>
-                  <p>Alpha or Poisson blending and boundary refinement.</p>
-                </div>
-              </article>
-              <article class="method-entry" id="harmonization">
-                <figure class="method-image-slot is-empty">
-                  <div class="image-placeholder">
-                    <span class="placeholder-mark" aria-hidden="true">+</span>
-                    <strong>Add image</strong>
-                    <code>assets/harmonization.*</code>
-                  </div>
-                </figure>
-                <div class="method-copy">
+                  <span class="method-node-icon" aria-hidden="true">+</span>
+                </span>
+                <span class="method-node-title">Blending</span>
+                <span class="method-node-description"
+                  >Alpha or Poisson blending and boundary refinement.</span
+                >
+                <span class="method-node-action">Open visual <span aria-hidden="true">↗</span></span>
+              </button>
+              <button
+                class="method-node"
+                id="harmonization"
+                type="button"
+                data-visual-node
+                data-node-index="C.02"
+                data-node-title="Harmonization"
+                data-node-description="Color, illumination, style, blur, and noise matching."
+                data-node-image="./assets/harmonization.png"
+              >
+                <span class="method-node-top">
                   <span class="method-index">C.02</span>
-                  <h4>Harmonization</h4>
-                  <p>Color, illumination, style, blur, and noise matching.</p>
-                </div>
-              </article>
-              <article class="method-entry" id="shadow-reflection">
-                <figure class="method-image-slot is-empty">
-                  <div class="image-placeholder">
-                    <span class="placeholder-mark" aria-hidden="true">+</span>
-                    <strong>Add image</strong>
-                    <code>assets/shadow-reflection.*</code>
-                  </div>
-                </figure>
-                <div class="method-copy">
+                  <span class="method-node-icon" aria-hidden="true">+</span>
+                </span>
+                <span class="method-node-title">Harmonization</span>
+                <span class="method-node-description"
+                  >Color, illumination, style, blur, and noise matching.</span
+                >
+                <span class="method-node-action">Open visual <span aria-hidden="true">↗</span></span>
+              </button>
+              <button
+                class="method-node"
+                id="shadow-reflection"
+                type="button"
+                data-visual-node
+                data-node-index="C.03"
+                data-node-title="Shadow &amp; reflection"
+                data-node-description="Contact shadow, relighting, and reflection consistency."
+                data-node-image="./assets/shadow-reflection.png"
+              >
+                <span class="method-node-top">
                   <span class="method-index">C.03</span>
-                  <h4>Shadow &amp; reflection</h4>
-                  <p>Contact shadow, relighting, and reflection consistency.</p>
-                </div>
-              </article>
+                  <span class="method-node-icon" aria-hidden="true">+</span>
+                </span>
+                <span class="method-node-title">Shadow &amp; reflection</span>
+                <span class="method-node-description"
+                  >Contact shadow, relighting, and reflection consistency.</span
+                >
+                <span class="method-node-action">Open visual <span aria-hidden="true">↗</span></span>
+              </button>
             </div>
           </section>
 
@@ -542,110 +598,48 @@
               <span>2 subtopics</span>
             </header>
             <div class="method-list">
-              <article class="method-entry" id="single-camera">
-                <figure class="method-image-slot is-empty">
-                  <div class="image-placeholder">
-                    <span class="placeholder-mark" aria-hidden="true">+</span>
-                    <strong>Add image</strong>
-                    <code>assets/single-camera.*</code>
-                  </div>
-                </figure>
-                <div class="method-copy">
+              <button
+                class="method-node"
+                id="single-camera"
+                type="button"
+                data-visual-node
+                data-node-index="D.01"
+                data-node-title="Single-Camera"
+                data-node-description="Tracklets, motion, masks, appearance, and occlusion consistency."
+                data-node-image="./assets/single-camera.png"
+              >
+                <span class="method-node-top">
                   <span class="method-index">D.01</span>
-                  <h4>Single-Camera</h4>
-                  <p>Tracklets, motion, masks, appearance, and occlusion consistency.</p>
-                </div>
-              </article>
-              <article class="method-entry" id="multi-camera">
-                <figure class="method-image-slot is-empty">
-                  <div class="image-placeholder">
-                    <span class="placeholder-mark" aria-hidden="true">+</span>
-                    <strong>Add image</strong>
-                    <code>assets/multi-camera.*</code>
-                  </div>
-                </figure>
-                <div class="method-copy">
+                  <span class="method-node-icon" aria-hidden="true">+</span>
+                </span>
+                <span class="method-node-title">Single-Camera</span>
+                <span class="method-node-description"
+                  >Tracklets, motion, masks, appearance, and occlusion consistency.</span
+                >
+                <span class="method-node-action">Open visual <span aria-hidden="true">↗</span></span>
+              </button>
+              <button
+                class="method-node"
+                id="multi-camera"
+                type="button"
+                data-visual-node
+                data-node-index="D.02"
+                data-node-title="Multi-camera"
+                data-node-description="Identity, viewpoint, transitions, and camera handoff consistency."
+                data-node-image="./assets/multi-camera.png"
+              >
+                <span class="method-node-top">
                   <span class="method-index">D.02</span>
-                  <h4>Multi-camera</h4>
-                  <p>Identity, viewpoint, transitions, and camera handoff consistency.</p>
-                </div>
-              </article>
+                  <span class="method-node-icon" aria-hidden="true">+</span>
+                </span>
+                <span class="method-node-title">Multi-camera</span>
+                <span class="method-node-description"
+                  >Identity, viewpoint, transitions, and camera handoff consistency.</span
+                >
+                <span class="method-node-action">Open visual <span aria-hidden="true">↗</span></span>
+              </button>
             </div>
           </section>
-        </section>
-
-        <section class="article-section" id="media">
-          <div class="section-label"><span>03 · Visual media</span><span>Native video</span></div>
-          <h2>Media stays inside the reading flow.</h2>
-          <p>
-            Survey pages support native images and video without sending the reader elsewhere.
-            The example below is deliberately short and muted: it tests playback, poster loading,
-            responsive sizing, and the browser’s built-in controls.
-          </p>
-          <figure class="video-frame">
-            <video
-              controls
-              muted
-              loop
-              playsinline
-              preload="metadata"
-              poster="./assets/image-composition-taxonomy.drawio.svg"
-            >
-              <source src="./assets/composition-map-tour.mp4" type="video/mp4" />
-              Your browser does not support embedded MP4 video.
-            </video>
-            <figcaption>
-              <strong>Media example.</strong> An eight-second visual tour generated from the
-              taxonomy figure. Replace this file with a method demo, talk excerpt, or result reel.
-            </figcaption>
-          </figure>
-          <div class="media-specs" aria-label="Supported media patterns">
-            <span>PNG / JPG / SVG</span>
-            <span>MP4 / WebM</span>
-            <span>Responsive</span>
-            <span>Captioned</span>
-            <span>Keyboard accessible</span>
-          </div>
-        </section>
-
-        <section class="article-section" id="reading-list">
-          <div class="section-label"><span>04 · Reading paths</span><span>Editorial scaffold</span></div>
-          <h2>Turn a bibliography into decisions.</h2>
-          <p>
-            A useful survey should explain why a reader would choose one path over another. This
-            starter structure is intentionally method-oriented; add verified papers and links as
-            the review develops.
-          </p>
-          <div class="reading-groups">
-            <section class="reading-group">
-              <h3>Start here</h3>
-              <ul>
-                <li>Define the composition operator and the expected form of control.</li>
-                <li>Separate geometric plausibility from photometric realism.</li>
-              </ul>
-            </section>
-            <section class="reading-group">
-              <h3>For object insertion</h3>
-              <ul>
-                <li>Read placement and transformation before blending.</li>
-                <li>Check whether masks, depth, support relations, or reference poses are required.</li>
-              </ul>
-            </section>
-            <section class="reading-group">
-              <h3>For realism</h3>
-              <ul>
-                <li>Compare boundary quality, global harmonization, and illumination consistency.</li>
-                <li>Inspect shadow and reflection behavior separately from color matching.</li>
-              </ul>
-            </section>
-            <section class="reading-group">
-              <h3>For video</h3>
-              <ul>
-                <li>Track identity, shape, and occlusion—not only pixel similarity.</li>
-                <li>Report failure under camera motion, motion blur, and long occlusion.</li>
-              </ul>
-            </section>
-          </div>
         </section>
 
         <footer class="article-end">
@@ -683,6 +677,31 @@
       </div>
     </dialog>
 
-    <script src="../assets/site.js?v=20260730-2"></script>
+    <dialog class="node-dialog" data-node-dialog aria-labelledby="node-dialog-title">
+      <div class="node-dialog-header">
+        <div>
+          <span data-node-dialog-index>Node</span>
+          <strong id="node-dialog-title" data-node-dialog-title>Visual node</strong>
+        </div>
+        <button class="button compact" type="button" data-node-dialog-close>Close</button>
+      </div>
+      <div class="node-dialog-body">
+        <div class="node-dialog-canvas">
+          <img data-node-dialog-image src="" alt="" hidden />
+          <div class="node-dialog-placeholder" data-node-dialog-placeholder>
+            <span class="placeholder-mark" aria-hidden="true">+</span>
+            <strong>No image added yet</strong>
+            <span>Drop the asset at</span>
+            <code data-node-dialog-file>assets/node.png</code>
+          </div>
+        </div>
+        <div class="node-dialog-caption">
+          <p data-node-dialog-description></p>
+          <span>Click outside the dialog or press Esc to close.</span>
+        </div>
+      </div>
+    </dialog>
+
+    <script src="../assets/site.js?v=20260730-3"></script>
   </body>
 </html>

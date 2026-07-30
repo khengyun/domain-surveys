@@ -65,17 +65,15 @@ The workflow publishes the repository as a static site.
 - Keep each asset beside the survey that owns it.
 - Compress large media before committing; GitHub Pages is best for short demos and figures.
 
-### Fill a subtopic image slot
+### Fill a visual node
 
-The Image Composition survey contains one empty frame per taxonomy leaf. To fill a frame:
+The Image Composition survey contains one clickable visual node per taxonomy leaf. Each node
+already points to an expected PNG filename, so the simplest workflow requires no HTML change:
 
-1. Add the image to `image-composition/assets/`.
-2. Find its `<figure class="method-image-slot is-empty">` in
-   `image-composition/index.html`.
-3. Remove `is-empty` and replace the placeholder `<div>` with an `<img>`:
+1. Export the image as the filename shown in the empty dialog, for example
+   `image-pasting.png`.
+2. Add it to `image-composition/assets/`.
+3. Click the node again; the dialog now displays the image automatically.
 
-```html
-<figure class="method-image-slot">
-  <img src="./assets/image-pasting.png" alt="Example of image pasting" />
-</figure>
-```
+To use JPG, SVG, or another filename, update that node's `data-node-image` value in
+`image-composition/index.html`.

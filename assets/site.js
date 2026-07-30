@@ -155,6 +155,65 @@
     if (zoomButton) zoomButton.textContent = "Zoom";
   });
 
+  const nodeDialog = document.querySelector("[data-node-dialog]");
+  const nodeDialogIndex = nodeDialog?.querySelector("[data-node-dialog-index]");
+  const nodeDialogTitle = nodeDialog?.querySelector("[data-node-dialog-title]");
+  const nodeDialogDescription = nodeDialog?.querySelector("[data-node-dialog-description]");
+  const nodeDialogImage = nodeDialog?.querySelector("[data-node-dialog-image]");
+  const nodeDialogPlaceholder = nodeDialog?.querySelector("[data-node-dialog-placeholder]");
+  const nodeDialogFile = nodeDialog?.querySelector("[data-node-dialog-file]");
+
+  document.querySelectorAll("[data-visual-node]").forEach((node) => {
+    node.addEventListener("click", () => {
+      if (!nodeDialog || typeof nodeDialog.showModal !== "function") return;
+
+      const title = node.dataset.nodeTitle || "Visual node";
+      const description = node.dataset.nodeDescription || "";
+      const imageSource = node.dataset.nodeImage || "";
+      const expectedFile = imageSource.replace(/^\.\//, "");
+
+      if (nodeDialogIndex) nodeDialogIndex.textContent = node.dataset.nodeIndex || "Node";
+      if (nodeDialogTitle) nodeDialogTitle.textContent = title;
+      if (nodeDialogDescription) nodeDialogDescription.textContent = description;
+      if (nodeDialogFile) nodeDialogFile.textContent = expectedFile || "assets/node.png";
+
+      if (nodeDialogImage && nodeDialogPlaceholder) {
+        nodeDialogImage.hidden = true;
+        nodeDialogPlaceholder.hidden = false;
+        nodeDialogImage.alt = `${title} visual`;
+        nodeDialogImage.onload = () => {
+          nodeDialogImage.hidden = false;
+          nodeDialogPlaceholder.hidden = true;
+        };
+        nodeDialogImage.onerror = () => {
+          nodeDialogImage.hidden = true;
+          nodeDialogPlaceholder.hidden = false;
+        };
+        nodeDialogImage.src = imageSource;
+      }
+
+      nodeDialog.showModal();
+      document.body.classList.add("is-locked");
+    });
+  });
+
+  nodeDialog?.querySelector("[data-node-dialog-close]")?.addEventListener("click", () => {
+    nodeDialog.close();
+  });
+
+  nodeDialog?.addEventListener("click", (event) => {
+    if (event.target === nodeDialog) nodeDialog.close();
+  });
+
+  nodeDialog?.addEventListener("close", () => {
+    document.body.classList.remove("is-locked");
+    if (nodeDialogImage) {
+      nodeDialogImage.onload = null;
+      nodeDialogImage.onerror = null;
+      nodeDialogImage.removeAttribute("src");
+    }
+  });
+
   document.querySelectorAll("[data-copy-section]").forEach((button) => {
     button.addEventListener("click", async () => {
       const id = button.dataset.copySection;
