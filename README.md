@@ -3,6 +3,8 @@
 [![Check site](https://github.com/khengyun/domain-surveys/actions/workflows/check-site.yml/badge.svg)](https://github.com/khengyun/domain-surveys/actions/workflows/check-site.yml)
 [![Deploy static site to GitHub Pages](https://github.com/khengyun/domain-surveys/actions/workflows/pages.yml/badge.svg)](https://github.com/khengyun/domain-surveys/actions/workflows/pages.yml)
 
+🌐 **Website:** [khengyun.github.io/domain-surveys](https://khengyun.github.io/domain-surveys/)
+
 A visual, folder-first home for living surveys about artificial intelligence.
 
 The website is plain static HTML/CSS/JavaScript, so every survey gets a durable URL:
