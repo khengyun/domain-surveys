@@ -60,6 +60,8 @@ The workflow publishes the repository as a static site.
 ## Media
 
 - Images and diagrams open in a full-screen, zoomable viewer.
+- Visual nodes render native `.drawio` XML in an interactive diagrams.net viewer with pan,
+  zoom, page, and layer controls.
 - PNG, JPG, SVG, MP4, and WebM work without extra JavaScript.
 - Editable draw.io exports use the double extension `*.drawio.svg`.
 - Keep each asset beside the survey that owns it.
@@ -68,12 +70,24 @@ The workflow publishes the repository as a static site.
 ### Fill a visual node
 
 The Image Composition survey contains one clickable visual node per taxonomy leaf. Each node
-already points to an expected PNG filename, so the simplest workflow requires no HTML change:
+already points to an expected native draw.io filename, so the simplest workflow requires no HTML
+change or image export:
 
-1. Export the image as the filename shown in the empty dialog, for example
-   `image-pasting.png`.
+1. Save the diagram as the filename shown in the empty dialog, for example
+   `image-pasting.drawio`.
 2. Add it to `image-composition/assets/`.
-3. Click the node again; the dialog now displays the image automatically.
+3. Click the node again; the dialog now renders the diagram with interactive controls.
 
-To use JPG, SVG, or another filename, update that node's `data-node-image` value in
+To use another draw.io filename, update that node's `data-node-diagram` value in
 `image-composition/index.html`.
+
+### Update the main taxonomy
+
+The native source is `image-composition/assets/image-composition-taxonomy.drawio`. After editing
+it, regenerate the in-page SVG preview while keeping the source embedded:
+
+```bash
+drawio -x -f svg -e -t -b 0 --svg-theme light \
+  -o image-composition/assets/image-composition-taxonomy.drawio.svg \
+  image-composition/assets/image-composition-taxonomy.drawio
+```

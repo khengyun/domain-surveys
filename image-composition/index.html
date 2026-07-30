@@ -10,7 +10,7 @@
     <meta name="theme-color" content="#f7f7f3" />
     <title>Image Composition — Domain Surveys</title>
     <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="../assets/styles.css?v=20260730-4" />
+    <link rel="stylesheet" href="../assets/styles.css?v=20260731-1" />
     <script>
       (() => {
         const saved = localStorage.getItem("domain-surveys-theme");
@@ -190,35 +190,37 @@
             <div class="media-toolbar">
               <div class="media-title">
                 <span aria-hidden="true"></span>
-                <span>image-composition-taxonomy.drawio.svg</span>
+                <span>image-composition-taxonomy.drawio</span>
               </div>
               <div class="media-actions">
                 <button
                   class="button secondary compact"
                   type="button"
-                  data-lightbox-trigger
-                  data-image-src="./assets/image-composition-taxonomy.drawio.svg"
-                  data-image-alt="Taxonomy of image composition research"
-                  data-image-title="Image composition taxonomy"
+                  data-visual-node
+                  data-node-index="Figure 1"
+                  data-node-title="Image composition taxonomy"
+                  data-node-description="A working systems map of image composition research."
+                  data-node-diagram="./assets/image-composition-taxonomy.drawio"
                 >
-                  Full screen
+                  Interactive view
                 </button>
                 <a
                   class="button secondary compact"
-                  href="./assets/image-composition-taxonomy.drawio.svg"
+                  href="./assets/image-composition-taxonomy.drawio"
                   download
-                  >Download SVG</a
+                  >Download .drawio</a
                 >
               </div>
             </div>
             <button
               class="media-canvas"
               type="button"
-              data-lightbox-trigger
-              data-image-src="./assets/image-composition-taxonomy.drawio.svg"
-              data-image-alt="Taxonomy of image composition research"
-              data-image-title="Image composition taxonomy"
-              aria-label="Open image composition taxonomy full screen"
+              data-visual-node
+              data-node-index="Figure 1"
+              data-node-title="Image composition taxonomy"
+              data-node-description="A working systems map of image composition research."
+              data-node-diagram="./assets/image-composition-taxonomy.drawio"
+              aria-label="Open the interactive image composition taxonomy"
             >
               <img
                 class="diagram-asset"
@@ -231,7 +233,7 @@
             </button>
             <figcaption>
               <strong>Figure 1.</strong> A working taxonomy of image composition. Select the figure
-              to zoom. The SVG contains its embedded draw.io source and remains editable.
+              to pan and zoom, or download the native draw.io source to edit it.
             </figcaption>
           </figure>
 
@@ -270,7 +272,7 @@
                 data-node-index="A.01"
                 data-node-title="Image pasting"
                 data-node-description="Cut-and-paste, alpha masks, and copy-paste augmentation."
-                data-node-image="./assets/image-pasting.png"
+                data-node-diagram="./assets/image-pasting.drawio"
               >
                 <span class="method-node-top">
                   <span class="method-index">A.01</span>
@@ -290,7 +292,7 @@
                 data-node-index="A.02"
                 data-node-title="Image fusion"
                 data-node-description="Linear mixing and part-level fusion."
-                data-node-image="./assets/image-fusion.png"
+                data-node-diagram="./assets/image-fusion.drawio"
               >
                 <span class="method-node-top">
                   <span class="method-index">A.02</span>
@@ -308,7 +310,7 @@
                 data-node-index="A.03"
                 data-node-title="Generative composition"
                 data-node-description="GAN or diffusion insertion with identity preservation."
-                data-node-image="./assets/generative-composition.png"
+                data-node-diagram="./assets/generative-composition.drawio"
               >
                 <span class="method-node-top">
                   <span class="method-index">A.03</span>
@@ -344,7 +346,7 @@
                 data-node-index="B.01"
                 data-node-title="Object placement"
                 data-node-description="Location, scale, support, and semantic context."
-                data-node-image="./assets/object-placement.png"
+                data-node-diagram="./assets/object-placement.drawio"
               >
                 <span class="method-node-top">
                   <span class="method-index">B.01</span>
@@ -364,7 +366,7 @@
                 data-node-index="B.02"
                 data-node-title="Spatial transformation"
                 data-node-description="Affine or perspective transforms, pose, view, and depth."
-                data-node-image="./assets/spatial-transformation.png"
+                data-node-diagram="./assets/spatial-transformation.drawio"
               >
                 <span class="method-node-top">
                   <span class="method-index">B.02</span>
@@ -384,7 +386,7 @@
                 data-node-index="B.03"
                 data-node-title="Occlusion reasoning"
                 data-node-description="Depth order, partial or full visibility, and occluder relations."
-                data-node-image="./assets/occlusion-reasoning.png"
+                data-node-diagram="./assets/occlusion-reasoning.drawio"
               >
                 <span class="method-node-top">
                   <span class="method-index">B.03</span>
@@ -404,7 +406,7 @@
                 data-node-index="B.04"
                 data-node-title="Foreground search &amp; extraction"
                 data-node-description="Source selection, segmentation, matting, and amodal masks."
-                data-node-image="./assets/foreground-extraction.png"
+                data-node-diagram="./assets/foreground-extraction.drawio"
               >
                 <span class="method-node-top">
                   <span class="method-index">B.04</span>
@@ -440,7 +442,7 @@
                 data-node-index="C.01"
                 data-node-title="Blending"
                 data-node-description="Alpha or Poisson blending and boundary refinement."
-                data-node-image="./assets/blending.png"
+                data-node-diagram="./assets/blending.drawio"
               >
                 <span class="method-node-top">
                   <span class="method-index">C.01</span>
@@ -460,7 +462,7 @@
                 data-node-index="C.02"
                 data-node-title="Harmonization"
                 data-node-description="Color, illumination, style, blur, and noise matching."
-                data-node-image="./assets/harmonization.png"
+                data-node-diagram="./assets/harmonization.drawio"
               >
                 <span class="method-node-top">
                   <span class="method-index">C.02</span>
@@ -480,7 +482,7 @@
                 data-node-index="C.03"
                 data-node-title="Shadow &amp; reflection"
                 data-node-description="Contact shadow, relighting, and reflection consistency."
-                data-node-image="./assets/shadow-reflection.png"
+                data-node-diagram="./assets/shadow-reflection.drawio"
               >
                 <span class="method-node-top">
                   <span class="method-index">C.03</span>
@@ -512,7 +514,7 @@
                 data-node-index="D.01"
                 data-node-title="Single-Camera"
                 data-node-description="Tracklets, motion, masks, appearance, and occlusion consistency."
-                data-node-image="./assets/single-camera.png"
+                data-node-diagram="./assets/single-camera.drawio"
               >
                 <span class="method-node-top">
                   <span class="method-index">D.01</span>
@@ -532,7 +534,7 @@
                 data-node-index="D.02"
                 data-node-title="Multi-camera"
                 data-node-description="Identity, viewpoint, transitions, and camera handoff consistency."
-                data-node-image="./assets/multi-camera.png"
+                data-node-diagram="./assets/multi-camera.drawio"
               >
                 <span class="method-node-top">
                   <span class="method-index">D.02</span>
@@ -587,11 +589,38 @@
       <div class="node-dialog-body">
         <div class="node-dialog-viewer">
           <div class="node-dialog-canvas">
-            <img data-node-dialog-image src="" alt="" hidden />
-            <div class="node-dialog-placeholder" data-node-dialog-placeholder>
-              <span class="placeholder-mark" aria-hidden="true">+</span>
-              <strong>No image added yet</strong>
+            <div
+              class="node-dialog-diagram"
+              data-node-dialog-diagram
+              aria-label="Interactive draw.io diagram"
+              hidden
+            ></div>
+            <div
+              class="node-dialog-controls"
+              data-node-dialog-controls
+              role="group"
+              aria-label="Diagram zoom controls"
+              hidden
+            >
+              <button type="button" data-node-dialog-zoom-out aria-label="Zoom out">−</button>
+              <button type="button" data-node-dialog-fit>Fit</button>
+              <button type="button" data-node-dialog-zoom-in aria-label="Zoom in">+</button>
             </div>
+            <div
+              class="node-dialog-placeholder"
+              data-node-dialog-placeholder
+              role="status"
+              aria-live="polite"
+            >
+              <span class="placeholder-mark" aria-hidden="true">+</span>
+              <strong data-node-dialog-placeholder-title>No diagram added yet</strong>
+              <span data-node-dialog-placeholder-detail
+                >Add the draw.io file shown in the details.</span
+              >
+            </div>
+            <p class="node-dialog-gesture" data-node-dialog-gesture hidden>
+              Drag to pan · Use the viewer controls to zoom
+            </p>
           </div>
         </div>
         <aside class="node-dialog-panel">
@@ -611,8 +640,8 @@
             <h2 id="node-dialog-title" data-node-dialog-title>Visual node</h2>
             <p class="node-dialog-description" data-node-dialog-description></p>
             <div class="node-dialog-asset">
-              <span>Image asset</span>
-              <code data-node-dialog-file>assets/node.png</code>
+              <span>Draw.io asset</span>
+              <code data-node-dialog-file>assets/node.drawio</code>
             </div>
           </div>
           <p class="node-dialog-hint">Click outside or press Esc to close.</p>
@@ -620,6 +649,7 @@
       </div>
     </dialog>
 
-    <script src="../assets/site.js?v=20260730-3"></script>
+    <script src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
+    <script src="../assets/site.js?v=20260731-1"></script>
   </body>
 </html>

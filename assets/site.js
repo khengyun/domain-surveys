@@ -159,9 +159,176 @@
   const nodeDialogIndex = nodeDialog?.querySelector("[data-node-dialog-index]");
   const nodeDialogTitle = nodeDialog?.querySelector("[data-node-dialog-title]");
   const nodeDialogDescription = nodeDialog?.querySelector("[data-node-dialog-description]");
-  const nodeDialogImage = nodeDialog?.querySelector("[data-node-dialog-image]");
+  const nodeDialogDiagram = nodeDialog?.querySelector("[data-node-dialog-diagram]");
   const nodeDialogPlaceholder = nodeDialog?.querySelector("[data-node-dialog-placeholder]");
+  const nodeDialogPlaceholderTitle = nodeDialog?.querySelector(
+    "[data-node-dialog-placeholder-title]",
+  );
+  const nodeDialogPlaceholderDetail = nodeDialog?.querySelector(
+    "[data-node-dialog-placeholder-detail]",
+  );
+  const nodeDialogGesture = nodeDialog?.querySelector("[data-node-dialog-gesture]");
+  const nodeDialogControls = nodeDialog?.querySelector("[data-node-dialog-controls]");
   const nodeDialogFile = nodeDialog?.querySelector("[data-node-dialog-file]");
+  let nodeDialogLoadController = null;
+  let nodeDialogLoadId = 0;
+  let nodeDialogViewer = null;
+
+  const setNodeDialogViewerState = (state, title, detail = "") => {
+    const isReady = state === "ready";
+
+    if (nodeDialogDiagram) nodeDialogDiagram.hidden = !isReady;
+    if (nodeDialogPlaceholder) {
+      nodeDialogPlaceholder.hidden = isReady;
+      nodeDialogPlaceholder.classList.toggle("is-loading", state === "loading");
+    }
+    if (nodeDialogGesture) nodeDialogGesture.hidden = !isReady;
+    if (nodeDialogControls) nodeDialogControls.hidden = !isReady;
+    if (nodeDialogPlaceholderTitle) nodeDialogPlaceholderTitle.textContent = title;
+    if (nodeDialogPlaceholderDetail) nodeDialogPlaceholderDetail.textContent = detail;
+  };
+
+  const destroyNodeDialogViewer = () => {
+    nodeDialogLoadController?.abort();
+    nodeDialogLoadController = null;
+    nodeDialogLoadId += 1;
+
+    try {
+      nodeDialogViewer?.graph?.destroy?.();
+    } catch {
+      // The viewer may already have removed its graph while the dialog was closing.
+    }
+
+    const viewerToolbar = nodeDialogViewer?.toolbar;
+    if (viewerToolbar?.parentNode && !nodeDialogDiagram?.contains(viewerToolbar)) {
+      viewerToolbar.remove();
+    }
+
+    nodeDialogViewer = null;
+    nodeDialogDiagram?.replaceChildren();
+    nodeDialogDiagram?.removeAttribute("data-mxgraph");
+  };
+
+  const loadNodeDiagram = async (source, title, expectedFile) => {
+    if (!nodeDialogDiagram) return;
+
+    destroyNodeDialogViewer();
+    const loadId = nodeDialogLoadId;
+    const controller = new AbortController();
+    nodeDialogLoadController = controller;
+
+    setNodeDialogViewerState("loading", "Loading diagram", expectedFile);
+
+    if (!source) {
+      setNodeDialogViewerState(
+        "missing",
+        "No diagram added yet",
+        "Add a .drawio asset to this visual node.",
+      );
+      return;
+    }
+
+    try {
+      const response = await fetch(source, { signal: controller.signal });
+      if (response.status === 404) {
+        setNodeDialogViewerState(
+          "missing",
+          "No diagram added yet",
+          `Add ${expectedFile} to render it here.`,
+        );
+        return;
+      }
+      if (!response.ok) {
+        throw new Error(`The diagram request returned ${response.status}.`);
+      }
+
+      const xml = await response.text();
+      const xmlDocument = new DOMParser().parseFromString(xml, "application/xml");
+      const rootName = xmlDocument.documentElement?.localName;
+      const hasParseError = xmlDocument.querySelector("parsererror");
+
+      if (hasParseError || !["mxfile", "mxGraphModel"].includes(rootName)) {
+        throw new Error("This file is not valid draw.io XML.");
+      }
+      if (loadId !== nodeDialogLoadId || !nodeDialog?.open) return;
+      if (typeof window.GraphViewer?.createViewerForElement !== "function") {
+        throw new Error("The draw.io viewer could not be loaded. Reload while online.");
+      }
+
+      nodeDialogDiagram.style.width = "100%";
+      nodeDialogDiagram.style.height = "100%";
+      nodeDialogDiagram.setAttribute("aria-label", `${title} interactive draw.io diagram`);
+      nodeDialogDiagram.setAttribute(
+        "data-mxgraph",
+        JSON.stringify({
+          xml,
+          toolbar: "pages layers",
+          "toolbar-position": "inline",
+          "auto-fit": true,
+          "allow-zoom-in": true,
+          "check-visible-state": false,
+          center: true,
+          resize: false,
+          lightbox: false,
+          nav: true,
+          border: 24,
+          "dark-mode": "light",
+          title,
+        }),
+      );
+
+      // The canvas must be measurable before draw.io calculates its fit scale.
+      nodeDialogDiagram.hidden = false;
+      nodeDialogPlaceholder.hidden = true;
+
+      window.GraphViewer.createViewerForElement(nodeDialogDiagram, (viewer) => {
+        if (loadId !== nodeDialogLoadId || !nodeDialog?.open) {
+          viewer.graph?.destroy?.();
+          viewer.toolbar?.remove?.();
+          return;
+        }
+
+        nodeDialogViewer = viewer;
+        nodeDialogLoadController = null;
+        nodeDialogDiagram.removeAttribute("data-mxgraph");
+        setNodeDialogViewerState(
+          "ready",
+          "Interactive diagram ready",
+          "Drag to pan and use the viewer controls to zoom.",
+        );
+      });
+    } catch (error) {
+      if (error.name === "AbortError" || loadId !== nodeDialogLoadId) return;
+      setNodeDialogViewerState(
+        "error",
+        "Couldn’t open diagram",
+        error.message || "Check the draw.io file and try again.",
+      );
+    }
+  };
+
+  nodeDialog?.querySelector("[data-node-dialog-zoom-out]")?.addEventListener("click", () => {
+    nodeDialogViewer?.graph?.zoomOut();
+    if (nodeDialogViewer && nodeDialogDiagram) nodeDialogDiagram.style.overflow = "auto";
+  });
+
+  nodeDialog?.querySelector("[data-node-dialog-zoom-in]")?.addEventListener("click", () => {
+    nodeDialogViewer?.graph?.zoomIn();
+    if (nodeDialogViewer && nodeDialogDiagram) nodeDialogDiagram.style.overflow = "auto";
+  });
+
+  nodeDialog?.querySelector("[data-node-dialog-fit]")?.addEventListener("click", () => {
+    const graph = nodeDialogViewer?.graph;
+    const initialView = graph?.initialViewState;
+    if (!graph || !initialView) return;
+
+    graph.view.scaleAndTranslate(
+      initialView.scale,
+      initialView.translate.x,
+      initialView.translate.y,
+    );
+    if (nodeDialogDiagram) nodeDialogDiagram.style.overflow = "hidden";
+  });
 
   document.querySelectorAll("[data-visual-node]").forEach((node) => {
     node.addEventListener("click", () => {
@@ -169,31 +336,17 @@
 
       const title = node.dataset.nodeTitle || "Visual node";
       const description = node.dataset.nodeDescription || "";
-      const imageSource = node.dataset.nodeImage || "";
-      const expectedFile = imageSource.replace(/^\.\//, "");
+      const diagramSource = node.dataset.nodeDiagram || "";
+      const expectedFile = diagramSource.replace(/^\.\//, "") || "assets/node.drawio";
 
       if (nodeDialogIndex) nodeDialogIndex.textContent = node.dataset.nodeIndex || "Node";
       if (nodeDialogTitle) nodeDialogTitle.textContent = title;
       if (nodeDialogDescription) nodeDialogDescription.textContent = description;
-      if (nodeDialogFile) nodeDialogFile.textContent = expectedFile || "assets/node.png";
-
-      if (nodeDialogImage && nodeDialogPlaceholder) {
-        nodeDialogImage.hidden = true;
-        nodeDialogPlaceholder.hidden = false;
-        nodeDialogImage.alt = `${title} visual`;
-        nodeDialogImage.onload = () => {
-          nodeDialogImage.hidden = false;
-          nodeDialogPlaceholder.hidden = true;
-        };
-        nodeDialogImage.onerror = () => {
-          nodeDialogImage.hidden = true;
-          nodeDialogPlaceholder.hidden = false;
-        };
-        nodeDialogImage.src = imageSource;
-      }
+      if (nodeDialogFile) nodeDialogFile.textContent = expectedFile;
 
       nodeDialog.showModal();
       document.body.classList.add("is-locked");
+      loadNodeDiagram(diagramSource, title, expectedFile);
     });
   });
 
@@ -207,11 +360,7 @@
 
   nodeDialog?.addEventListener("close", () => {
     document.body.classList.remove("is-locked");
-    if (nodeDialogImage) {
-      nodeDialogImage.onload = null;
-      nodeDialogImage.onerror = null;
-      nodeDialogImage.removeAttribute("src");
-    }
+    destroyNodeDialogViewer();
   });
 
   document.querySelectorAll("[data-copy-section]").forEach((button) => {
