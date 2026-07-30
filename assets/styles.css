@@ -862,14 +862,14 @@ video {
   position: relative;
   display: grid;
   gap: 1px;
-  margin: 1px 0 7px 2px;
-  padding: 2px 0 3px 14px;
+  margin: 3px 0 9px 12px;
+  padding: 3px 0 4px 18px;
 }
 
 .rail-children::before {
   position: absolute;
-  top: 2px;
-  bottom: 3px;
+  top: 3px;
+  bottom: 4px;
   left: 0;
   width: 1px;
   background: var(--line);
@@ -885,7 +885,22 @@ video {
 .rail-children a::before {
   top: 2px;
   bottom: 2px;
-  left: -14px;
+  left: -18px;
+}
+
+.rail-children a::after {
+  position: absolute;
+  top: 50%;
+  left: -18px;
+  width: 10px;
+  height: 1px;
+  background: var(--line);
+  content: "";
+}
+
+.rail-children a:hover::after,
+.rail-children a.is-active::after {
+  background: var(--accent);
 }
 
 .rail-status {
