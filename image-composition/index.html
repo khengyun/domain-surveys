@@ -10,7 +10,7 @@
     <meta name="theme-color" content="#f7f7f3" />
     <title>Image Composition — Domain Surveys</title>
     <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="../assets/styles.css?v=20260730-3" />
+    <link rel="stylesheet" href="../assets/styles.css?v=20260730-4" />
     <script>
       (() => {
         const saved = localStorage.getItem("domain-surveys-theme");
@@ -584,27 +584,39 @@
     </dialog>
 
     <dialog class="node-dialog" data-node-dialog aria-labelledby="node-dialog-title">
-      <div class="node-dialog-header">
-        <div>
-          <span data-node-dialog-index>Node</span>
-          <strong id="node-dialog-title" data-node-dialog-title>Visual node</strong>
-        </div>
-        <button class="button compact" type="button" data-node-dialog-close>Close</button>
-      </div>
       <div class="node-dialog-body">
-        <div class="node-dialog-canvas">
-          <img data-node-dialog-image src="" alt="" hidden />
-          <div class="node-dialog-placeholder" data-node-dialog-placeholder>
-            <span class="placeholder-mark" aria-hidden="true">+</span>
-            <strong>No image added yet</strong>
-            <span>Drop the asset at</span>
-            <code data-node-dialog-file>assets/node.png</code>
+        <div class="node-dialog-viewer">
+          <div class="node-dialog-canvas">
+            <img data-node-dialog-image src="" alt="" hidden />
+            <div class="node-dialog-placeholder" data-node-dialog-placeholder>
+              <span class="placeholder-mark" aria-hidden="true">+</span>
+              <strong>No image added yet</strong>
+            </div>
           </div>
         </div>
-        <div class="node-dialog-caption">
-          <p data-node-dialog-description></p>
-          <span>Click outside the dialog or press Esc to close.</span>
-        </div>
+        <aside class="node-dialog-panel">
+          <div class="node-dialog-panel-header">
+            <span data-node-dialog-index>Node</span>
+            <button
+              class="node-dialog-close"
+              type="button"
+              data-node-dialog-close
+              aria-label="Close visual"
+            >
+              ×
+            </button>
+          </div>
+          <div class="node-dialog-panel-content">
+            <p class="node-dialog-kicker">Visual note</p>
+            <h2 id="node-dialog-title" data-node-dialog-title>Visual node</h2>
+            <p class="node-dialog-description" data-node-dialog-description></p>
+            <div class="node-dialog-asset">
+              <span>Image asset</span>
+              <code data-node-dialog-file>assets/node.png</code>
+            </div>
+          </div>
+          <p class="node-dialog-hint">Click outside or press Esc to close.</p>
+        </aside>
       </div>
     </dialog>
 
