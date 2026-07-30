@@ -68,15 +68,24 @@
     .filter(Boolean);
 
   const setActiveSection = (id) => {
+    let activeLink = null;
     railLinks.forEach((link) => {
       const isActive = link.getAttribute("href") === `#${id}`;
       link.classList.toggle("is-active", isActive);
+      link.classList.remove("is-ancestor");
       if (isActive) {
+        activeLink = link;
         link.setAttribute("aria-current", "location");
       } else {
         link.removeAttribute("aria-current");
       }
     });
+
+    const parentTarget = activeLink?.dataset.navParent;
+    if (parentTarget) {
+      const parentLink = railLinks.find((link) => link.getAttribute("href") === parentTarget);
+      parentLink?.classList.add("is-ancestor");
+    }
   };
 
   if (observedSections.length) {

@@ -740,6 +740,9 @@ video {
   align-self: start;
   height: calc(100vh - 136px);
   padding: 38px 0 28px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-strong) transparent;
 }
 
 .rail-back {
@@ -825,18 +828,71 @@ video {
   font-weight: 760;
 }
 
-.rail-nav a.is-active::before {
+.rail-nav a.is-active::before,
+.rail-nav a.is-ancestor::before {
   width: 2px;
   background: var(--accent);
 }
 
-.rail-status {
+.rail-nav a.is-ancestor {
+  color: var(--ink);
+  font-weight: 760;
+}
+
+.rail-nav-group {
+  display: grid;
+  gap: 2px;
+}
+
+.rail-parent {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.rail-parent::after {
+  color: var(--ink-faint);
+  content: "⌄";
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.rail-children {
+  position: relative;
+  display: grid;
+  gap: 1px;
+  margin: 1px 0 7px 2px;
+  padding: 2px 0 3px 14px;
+}
+
+.rail-children::before {
   position: absolute;
-  bottom: 24px;
-  left: 15px;
+  top: 2px;
+  bottom: 3px;
+  left: 0;
+  width: 1px;
+  background: var(--line);
+  content: "";
+}
+
+.rail-children a {
+  padding: 5px 7px 5px 0;
+  font-size: 11px;
+  line-height: 1.28;
+}
+
+.rail-children a::before {
+  top: 2px;
+  bottom: 2px;
+  left: -14px;
+}
+
+.rail-status {
   display: flex;
   align-items: center;
   gap: 8px;
+  margin: 36px 0 0 15px;
   color: var(--ink-faint);
   font-size: 10px;
   font-weight: 700;
@@ -1695,11 +1751,6 @@ video {
 
   .rail-back {
     margin-bottom: 32px;
-  }
-
-  .rail-status {
-    position: static;
-    margin: 36px 0 0 15px;
   }
 
   .mobile-rail-toggle {

@@ -88,9 +88,22 @@
         <nav class="rail-nav" data-scrollspy>
           <a class="is-active" href="#overview" aria-current="location">Overview</a>
           <a href="#scope">Scope &amp; questions</a>
-          <a href="#taxonomy">Taxonomy</a>
-          <a href="#systems-map">Systems map</a>
-          <a href="#subtopic-gallery">Subtopic gallery</a>
+          <div class="rail-nav-group">
+            <a class="rail-parent" href="#taxonomy">Taxonomy</a>
+            <div class="rail-children">
+              <a href="#systems-map" data-nav-parent="#taxonomy">Systems map</a>
+              <a href="#composition-operators" data-nav-parent="#taxonomy"
+                >Composition Operators</a
+              >
+              <a href="#spatial-semantic-reasoning" data-nav-parent="#taxonomy"
+                >Spatial &amp; Semantic</a
+              >
+              <a href="#appearance-integration" data-nav-parent="#taxonomy"
+                >Appearance Integration</a
+              >
+              <a href="#video-extension" data-nav-parent="#taxonomy">Video Extension</a>
+            </div>
+          </div>
           <a href="#media">Visual media</a>
           <a href="#reading-list">Reading paths</a>
         </nav>
@@ -198,7 +211,9 @@
         </section>
 
         <section class="article-section" id="systems-map">
-          <div class="section-label"><span>03 · Systems map</span><span>Interactive figure</span></div>
+          <div class="section-label">
+            <span>02.1 · Systems map</span><span>Taxonomy overview</span>
+          </div>
           <h2>The field at a glance.</h2>
           <p>
             Open the figure for a full-screen view. The exported asset can also be downloaded and
@@ -305,7 +320,9 @@
         </section>
 
         <section class="article-section" id="subtopic-gallery">
-          <div class="section-label"><span>04 · Subtopic gallery</span><span>12 image slots</span></div>
+          <div class="section-label">
+            <span>02.2 · Taxonomy branches</span><span>12 image slots</span>
+          </div>
           <h2>One visual space for every branch.</h2>
           <p>
             Each subtopic from the diagram has its own image frame below. The frames are
@@ -328,7 +345,11 @@
             <a href="#multi-camera">Multi-camera</a>
           </nav>
 
-          <section class="method-family" aria-labelledby="operators-heading">
+          <section
+            class="method-family"
+            id="composition-operators"
+            aria-labelledby="operators-heading"
+          >
             <header class="method-family-header">
               <div>
                 <span class="method-family-index">A</span>
@@ -382,7 +403,11 @@
             </div>
           </section>
 
-          <section class="method-family" aria-labelledby="reasoning-heading">
+          <section
+            class="method-family"
+            id="spatial-semantic-reasoning"
+            aria-labelledby="reasoning-heading"
+          >
             <header class="method-family-header">
               <div>
                 <span class="method-family-index">B</span>
@@ -450,7 +475,11 @@
             </div>
           </section>
 
-          <section class="method-family" aria-labelledby="appearance-heading">
+          <section
+            class="method-family"
+            id="appearance-integration"
+            aria-labelledby="appearance-heading"
+          >
             <header class="method-family-header">
               <div>
                 <span class="method-family-index">C</span>
@@ -504,7 +533,7 @@
             </div>
           </section>
 
-          <section class="method-family" aria-labelledby="video-heading">
+          <section class="method-family" id="video-extension" aria-labelledby="video-heading">
             <header class="method-family-header">
               <div>
                 <span class="method-family-index">D</span>
@@ -546,7 +575,7 @@
         </section>
 
         <section class="article-section" id="media">
-          <div class="section-label"><span>05 · Visual media</span><span>Native video</span></div>
+          <div class="section-label"><span>03 · Visual media</span><span>Native video</span></div>
           <h2>Media stays inside the reading flow.</h2>
           <p>
             Survey pages support native images and video without sending the reader elsewhere.
@@ -580,7 +609,7 @@
         </section>
 
         <section class="article-section" id="reading-list">
-          <div class="section-label"><span>06 · Reading paths</span><span>Editorial scaffold</span></div>
+          <div class="section-label"><span>04 · Reading paths</span><span>Editorial scaffold</span></div>
           <h2>Turn a bibliography into decisions.</h2>
           <p>
             A useful survey should explain why a reader would choose one path over another. This
