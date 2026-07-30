@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A visual survey of image composition: operators, spatial reasoning, appearance integration, and video extension."
+    />
+    <meta name="theme-color" content="#f7f7f3" />
+    <title>Image Composition — Domain Surveys</title>
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../assets/styles.css" />
+    <script>
+      (() => {
+        const saved = localStorage.getItem("domain-surveys-theme");
+        const theme =
+          saved || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#article">Skip to survey</a>
+    <div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
+
+    <header class="site-header is-sticky">
+      <a class="brand" href="../" aria-label="Domain Surveys home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-copy">
+          <span>Domain Surveys</span>
+          <span>AI field notes</span>
+        </span>
+      </a>
+      <div class="header-actions">
+        <button
+          class="button secondary compact mobile-rail-toggle"
+          type="button"
+          data-rail-toggle
+          aria-expanded="false"
+          aria-controls="survey-navigation"
+        >
+          Contents
+        </button>
+        <a
+          class="header-link"
+          href="https://github.com/khengyun/domain-surveys/tree/main/image-composition"
+          target="_blank"
+          rel="noreferrer"
+          >Edit on GitHub</a
+        >
+        <button class="icon-button" type="button" data-theme-toggle aria-label="Switch theme">
+          <svg
+            class="theme-icon-sun"
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+          >
+            <circle cx="12" cy="12" r="3.5"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path>
+          </svg>
+          <svg
+            class="theme-icon-moon"
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+          >
+            <path d="M20 15.2A8.4 8.4 0 0 1 8.8 4a8.5 8.5 0 1 0 11.2 11.2Z"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="survey-shell">
+      <aside
+        class="survey-rail"
+        id="survey-navigation"
+        data-survey-rail
+        aria-label="Survey contents"
+      >
+        <a class="rail-back" href="../"><span aria-hidden="true">←</span> All surveys</a>
+        <p class="rail-kicker">Survey 01</p>
+        <p class="rail-title">Image<br />Composition</p>
+        <nav class="rail-nav" data-scrollspy>
+          <a class="is-active" href="#overview" aria-current="location">Overview</a>
+          <a href="#scope">Scope &amp; questions</a>
+          <a href="#taxonomy">Taxonomy</a>
+          <a href="#systems-map">Systems map</a>
+          <a href="#media">Visual media</a>
+          <a href="#reading-list">Reading paths</a>
+        </nav>
+        <div class="rail-status">Living survey</div>
+      </aside>
+
+      <article class="survey-article" id="article">
+        <header class="article-header" id="overview">
+          <p class="eyebrow">Computer vision · generative AI</p>
+          <h1 class="article-title">Image<br />Composition</h1>
+          <p class="article-lede">
+            How visual elements are selected, arranged, integrated, and kept coherent across a
+            single image—or an entire sequence.
+          </p>
+          <div class="article-meta">
+            <span>Living survey</span>
+            <span>10 min read</span>
+            <span>Updated 30 Jul 2026</span>
+          </div>
+          <div class="abstract-box">
+            <strong>Survey in one paragraph</strong>
+            <p>
+              Image composition is more than pasting one object onto another scene. A complete
+              system must decide what to insert, where it belongs, how it should transform, what
+              it occludes, and how its appearance should adapt to the target. For video, every
+              decision must also remain stable through time.
+            </p>
+          </div>
+        </header>
+
+        <section class="article-section" id="scope">
+          <div class="section-label"><span>01 · Scope</span><span>Why this field exists</span></div>
+          <h2>Four questions define the problem.</h2>
+          <p>
+            Different papers solve different slices of composition. Reading them as one field is
+            easier when each method is located by the decision it owns: the operator, the spatial
+            fit, the appearance match, or the temporal extension.
+          </p>
+          <div class="scope-grid">
+            <article class="scope-card">
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <rect x="4" y="4" width="10" height="10" rx="2"></rect>
+                <rect x="10" y="10" width="10" height="10" rx="2"></rect>
+              </svg>
+              <h3>What is combined?</h3>
+              <p>Pixels, layers, objects, identities, latent features, or complete generated regions.</p>
+            </article>
+            <article class="scope-card">
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <circle cx="12" cy="12" r="8"></circle>
+                <path d="m12 7 2.5 5-2.5 5-2.5-5 2.5-5Z"></path>
+              </svg>
+              <h3>Where does it fit?</h3>
+              <p>Location, scale, support, perspective, pose, depth, and semantic compatibility.</p>
+            </article>
+            <article class="scope-card">
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <path d="M4 15c3-8 6 1 9-6s4-2 7-4"></path>
+                <path d="M4 19h16"></path>
+              </svg>
+              <h3>How does it become believable?</h3>
+              <p>Boundary refinement, color, illumination, texture, blur, noise, shadow, and reflection.</p>
+            </article>
+            <article class="scope-card">
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <rect x="4" y="6" width="12" height="12" rx="2"></rect>
+                <path d="m16 10 4-2v8l-4-2"></path>
+              </svg>
+              <h3>What changes in video?</h3>
+              <p>Trajectories, masks, motion blur, camera noise, and occlusion must agree over time.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="article-section" id="taxonomy">
+          <div class="section-label"><span>02 · Taxonomy</span><span>Four layers</span></div>
+          <h2>A useful map separates action from reasoning.</h2>
+          <p>
+            The layers below form a practical reading order. Start with what the model does,
+            continue with where the content belongs, then inspect realism, and finally ask whether
+            the same logic survives across frames.
+          </p>
+          <div class="taxonomy-grid">
+            <article class="taxonomy-card blue">
+              <span class="taxonomy-number">1</span>
+              <h3>Composition operators</h3>
+              <p>Image pasting, image fusion, and generative composition define the basic action.</p>
+            </article>
+            <article class="taxonomy-card amber">
+              <span class="taxonomy-number">2</span>
+              <h3>Spatial &amp; semantic reasoning</h3>
+              <p>Placement, transformation, occlusion, and foreground discovery decide the fit.</p>
+            </article>
+            <article class="taxonomy-card violet">
+              <span class="taxonomy-number">3</span>
+              <h3>Appearance integration</h3>
+              <p>Blending, harmonization, shadows, and reflections make the result cohere.</p>
+            </article>
+            <article class="taxonomy-card moss">
+              <span class="taxonomy-number">4</span>
+              <h3>Video extension</h3>
+              <p>Tracking and temporal composition carry the problem from space into time.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="article-section" id="systems-map">
+          <div class="section-label"><span>03 · Systems map</span><span>Interactive figure</span></div>
+          <h2>The field at a glance.</h2>
+          <p>
+            Open the figure for a full-screen view. The exported asset can also be downloaded and
+            reused in a talk or research note.
+          </p>
+
+          <figure class="media-frame">
+            <div class="media-toolbar">
+              <div class="media-title">
+                <span aria-hidden="true"></span>
+                <span>image-composition-taxonomy.png</span>
+              </div>
+              <div class="media-actions">
+                <button
+                  class="button secondary compact"
+                  type="button"
+                  data-lightbox-trigger
+                  data-image-src="./assets/image-composition-taxonomy.png"
+                  data-image-alt="Taxonomy of image composition research"
+                  data-image-title="Image composition taxonomy"
+                >
+                  Full screen
+                </button>
+                <a
+                  class="button secondary compact"
+                  href="./assets/image-composition-taxonomy.drawio"
+                  download
+                  >Draw.io</a
+                >
+                <a class="button secondary compact" href="./assets/image-composition-taxonomy.png" download
+                  >Download</a
+                >
+              </div>
+            </div>
+            <button
+              class="media-canvas"
+              type="button"
+              data-lightbox-trigger
+              data-image-src="./assets/image-composition-taxonomy.png"
+              data-image-alt="Taxonomy of image composition research"
+              data-image-title="Image composition taxonomy"
+              aria-label="Open image composition taxonomy full screen"
+            >
+              <img
+                src="./assets/image-composition-taxonomy.png"
+                alt="Taxonomy diagram dividing image composition into composition operators, spatial and semantic reasoning, appearance integration, and video extension"
+                width="875"
+                height="958"
+                loading="lazy"
+              />
+            </button>
+            <figcaption>
+              <strong>Figure 1.</strong> A working taxonomy of image composition. Select the figure
+              to zoom; both the PNG and editable draw.io source are available for download.
+            </figcaption>
+          </figure>
+
+          <div class="reading-note">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+              <circle cx="12" cy="12" r="9"></circle>
+              <path d="M12 11v5M12 8h.01"></path>
+            </svg>
+            <p>
+              <strong>How to read the map:</strong> the rows are concerns, not a mandatory
+              pipeline. A generative model may solve placement and harmonization jointly even
+              though the survey keeps them conceptually separate.
+            </p>
+          </div>
+
+          <table class="systems-table">
+            <thead>
+              <tr>
+                <th>Concern</th>
+                <th>Core question</th>
+                <th>Typical mechanisms</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Operator</td>
+                <td>How are sources combined?</td>
+                <td>Cut-and-paste, alpha masks, fusion, generation</td>
+              </tr>
+              <tr>
+                <td>Geometry</td>
+                <td>Does the object belong here?</td>
+                <td>Affine or perspective transform, pose, depth</td>
+              </tr>
+              <tr>
+                <td>Visibility</td>
+                <td>What is in front?</td>
+                <td>Depth ordering, occlusion masks, amodal completion</td>
+              </tr>
+              <tr>
+                <td>Appearance</td>
+                <td>Does it look like one image?</td>
+                <td>Blending, harmonization, relighting, shadow synthesis</td>
+              </tr>
+              <tr>
+                <td>Time</td>
+                <td>Does it remain coherent?</td>
+                <td>Tracking, temporal masks, motion blur, camera noise</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="article-section" id="media">
+          <div class="section-label"><span>04 · Visual media</span><span>Native video</span></div>
+          <h2>Media stays inside the reading flow.</h2>
+          <p>
+            Survey pages support native images and video without sending the reader elsewhere.
+            The example below is deliberately short and muted: it tests playback, poster loading,
+            responsive sizing, and the browser’s built-in controls.
+          </p>
+          <figure class="video-frame">
+            <video
+              controls
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              poster="./assets/image-composition-taxonomy.png"
+            >
+              <source src="./assets/composition-map-tour.mp4" type="video/mp4" />
+              Your browser does not support embedded MP4 video.
+            </video>
+            <figcaption>
+              <strong>Media example.</strong> An eight-second visual tour generated from the
+              taxonomy figure. Replace this file with a method demo, talk excerpt, or result reel.
+            </figcaption>
+          </figure>
+          <div class="media-specs" aria-label="Supported media patterns">
+            <span>PNG / JPG / SVG</span>
+            <span>MP4 / WebM</span>
+            <span>Responsive</span>
+            <span>Captioned</span>
+            <span>Keyboard accessible</span>
+          </div>
+        </section>
+
+        <section class="article-section" id="reading-list">
+          <div class="section-label"><span>05 · Reading paths</span><span>Editorial scaffold</span></div>
+          <h2>Turn a bibliography into decisions.</h2>
+          <p>
+            A useful survey should explain why a reader would choose one path over another. This
+            starter structure is intentionally method-oriented; add verified papers and links as
+            the review develops.
+          </p>
+          <div class="reading-groups">
+            <section class="reading-group">
+              <h3>Start here</h3>
+              <ul>
+                <li>Define the composition operator and the expected form of control.</li>
+                <li>Separate geometric plausibility from photometric realism.</li>
+              </ul>
+            </section>
+            <section class="reading-group">
+              <h3>For object insertion</h3>
+              <ul>
+                <li>Read placement and transformation before blending.</li>
+                <li>Check whether masks, depth, support relations, or reference poses are required.</li>
+              </ul>
+            </section>
+            <section class="reading-group">
+              <h3>For realism</h3>
+              <ul>
+                <li>Compare boundary quality, global harmonization, and illumination consistency.</li>
+                <li>Inspect shadow and reflection behavior separately from color matching.</li>
+              </ul>
+            </section>
+            <section class="reading-group">
+              <h3>For video</h3>
+              <ul>
+                <li>Track identity, shape, and occlusion—not only pixel similarity.</li>
+                <li>Report failure under camera motion, motion blur, and long occlusion.</li>
+              </ul>
+            </section>
+          </div>
+        </section>
+
+        <footer class="article-end">
+          <p>
+            This is a living map: its value comes from making boundaries visible, then revising
+            them when the field no longer fits.
+          </p>
+          <div class="hero-actions">
+            <a class="button" href="../">Browse all surveys</a>
+            <button class="button secondary" type="button" data-copy-section="overview">
+              Copy survey link
+            </button>
+          </div>
+        </footer>
+      </article>
+    </main>
+
+    <dialog class="lightbox" data-lightbox-dialog aria-label="Diagram viewer">
+      <div class="lightbox-header">
+        <strong data-lightbox-title>Diagram</strong>
+        <div class="media-actions">
+          <button
+            class="button secondary compact"
+            type="button"
+            data-lightbox-zoom
+            aria-pressed="false"
+          >
+            Zoom
+          </button>
+          <button class="button compact" type="button" data-lightbox-close>Close</button>
+        </div>
+      </div>
+      <div class="lightbox-viewport">
+        <img data-lightbox-image src="" alt="" />
+      </div>
+    </dialog>
+
+    <script src="../assets/site.js"></script>
+  </body>
+</html>

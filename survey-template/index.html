@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Starter template for a Domain Surveys article." />
+    <title>Survey Template — Domain Surveys</title>
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../assets/styles.css" />
+    <script>
+      (() => {
+        const saved = localStorage.getItem("domain-surveys-theme");
+        const theme =
+          saved || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#article">Skip to survey</a>
+    <div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
+    <header class="site-header is-sticky">
+      <a class="brand" href="../">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-copy">
+          <span>Domain Surveys</span>
+          <span>AI field notes</span>
+        </span>
+      </a>
+      <div class="header-actions">
+        <button
+          class="button secondary compact mobile-rail-toggle"
+          type="button"
+          data-rail-toggle
+          aria-expanded="false"
+          aria-controls="survey-navigation"
+        >
+          Contents
+        </button>
+        <button class="icon-button" type="button" data-theme-toggle aria-label="Switch theme">
+          <svg
+            class="theme-icon-sun"
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+          >
+            <circle cx="12" cy="12" r="3.5"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path>
+          </svg>
+          <svg
+            class="theme-icon-moon"
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+          >
+            <path d="M20 15.2A8.4 8.4 0 0 1 8.8 4a8.5 8.5 0 1 0 11.2 11.2Z"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="survey-shell">
+      <aside class="survey-rail" id="survey-navigation" data-survey-rail>
+        <a class="rail-back" href="../">← All surveys</a>
+        <p class="rail-kicker">Template</p>
+        <p class="rail-title">Your survey<br />title</p>
+        <nav class="rail-nav" data-scrollspy>
+          <a class="is-active" href="#overview">Overview</a>
+          <a href="#section-one">First section</a>
+          <a href="#visual-map">Visual map</a>
+          <a href="#reading-list">Reading list</a>
+        </nav>
+        <div class="rail-status">Draft survey</div>
+      </aside>
+
+      <article class="survey-article" id="article">
+        <header class="article-header" id="overview">
+          <p class="eyebrow">Research area · subfield</p>
+          <h1 class="article-title">Your Survey<br />Title</h1>
+          <p class="article-lede">
+            One clear sentence that says what the field studies and why the reader should care.
+          </p>
+          <div class="article-meta">
+            <span>Draft survey</span>
+            <span>0 min read</span>
+            <span>Updated DD Mon YYYY</span>
+          </div>
+          <div class="abstract-box">
+            <strong>Survey in one paragraph</strong>
+            <p>
+              Replace this with the mental model a new reader should carry into the rest of the
+              survey.
+            </p>
+          </div>
+        </header>
+
+        <section class="article-section" id="section-one">
+          <div class="section-label"><span>01 · Section</span><span>Context</span></div>
+          <h2>Use one argument per section.</h2>
+          <p>
+            Keep prose in this column. Add cards, tables, or notes only when they make a
+            relationship easier to understand.
+          </p>
+        </section>
+
+        <section class="article-section" id="visual-map">
+          <div class="section-label"><span>02 · Visual map</span><span>Image or diagram</span></div>
+          <h2>Put the field’s shape where readers can see it.</h2>
+          <p>
+            Copy an image into this survey folder, then reuse the media-frame pattern from the
+            image-composition example to get full-screen zoom and download actions.
+          </p>
+          <div class="abstract-box">
+            <strong>Asset convention</strong>
+            <p>
+              Store survey-specific files in <code>your-survey/assets/</code>. Use relative URLs
+              so the page works both locally and under the GitHub Pages repository path.
+            </p>
+          </div>
+        </section>
+
+        <section class="article-section" id="reading-list">
+          <div class="section-label"><span>03 · Reading list</span><span>Verified sources</span></div>
+          <h2>Explain the path, not only the papers.</h2>
+          <p>
+            Group references by the decision they help a reader make. Add stable links and the
+            date you last checked each source.
+          </p>
+        </section>
+      </article>
+    </main>
+    <script src="../assets/site.js"></script>
+  </body>
+</html>

@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Living visual surveys of fast-moving fields in artificial intelligence."
+    />
+    <meta name="theme-color" content="#f7f7f3" />
+    <title>Domain Surveys — Visual field notes on AI</title>
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <script>
+      (() => {
+        const saved = localStorage.getItem("domain-surveys-theme");
+        const theme =
+          saved || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <a class="brand" href="./" aria-label="Domain Surveys home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-copy">
+          <span>Domain Surveys</span>
+          <span>AI field notes</span>
+        </span>
+      </a>
+      <div class="header-actions">
+        <a
+          class="header-link"
+          href="https://github.com/khengyun/domain-surveys"
+          target="_blank"
+          rel="noreferrer"
+          >View repository</a
+        >
+        <button class="icon-button" type="button" data-theme-toggle aria-label="Switch theme">
+          <svg
+            class="theme-icon-sun"
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+          >
+            <circle cx="12" cy="12" r="3.5"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path>
+          </svg>
+          <svg
+            class="theme-icon-moon"
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+          >
+            <path d="M20 15.2A8.4 8.4 0 0 1 8.8 4a8.5 8.5 0 1 0 11.2 11.2Z"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="home-main" id="main">
+      <section class="home-hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Open field notes on artificial intelligence</p>
+          <h1 id="hero-title">Surveys for finding <em>shape</em> in fast-moving fields.</h1>
+          <p>
+            Visual maps, careful reading paths, and practical taxonomies for anyone trying to
+            understand what an AI domain contains—and where it may go next.
+          </p>
+          <div class="hero-actions">
+            <a class="button" href="#surveys">
+              Browse surveys
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+              >
+                <path d="m9 18 6-6-6-6"></path>
+              </svg>
+            </a>
+            <a class="button secondary" href="./survey-template/">Use the template</a>
+          </div>
+        </div>
+
+        <div class="hero-preview" aria-label="Featured survey preview">
+          <a class="preview-card" href="./image-composition/">
+            <div class="preview-toolbar">
+              <span>Featured map · 01</span>
+              <span class="preview-dots" aria-hidden="true"><span></span><span></span><span></span></span>
+            </div>
+            <div class="preview-image">
+              <img
+                src="./image-composition/assets/image-composition-taxonomy.png"
+                alt="Taxonomy diagram for the image composition survey"
+                width="875"
+                height="958"
+              />
+            </div>
+            <div class="preview-caption">
+              <span>
+                <strong>Image Composition</strong>
+                <span>Taxonomy · methods · media</span>
+              </span>
+              <span class="circle-arrow" aria-hidden="true">↗</span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section class="catalog-section" id="surveys" aria-labelledby="catalog-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Survey index</p>
+            <h2 id="catalog-title">One domain, one clear reading path.</h2>
+          </div>
+          <p>
+            Each topic lives in its own folder, with a durable URL that can be linked, cited, and
+            updated independently.
+          </p>
+        </div>
+
+        <div class="survey-grid">
+          <article class="survey-card">
+            <a class="survey-card-link" href="./image-composition/">
+              <div class="card-visual">
+                <span class="card-number">01</span>
+                <img
+                  src="./image-composition/assets/image-composition-taxonomy.png"
+                  alt=""
+                  width="875"
+                  height="958"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-copy">
+                <div class="tag-row">
+                  <span class="tag">Computer vision</span>
+                  <span class="tag">Generative AI</span>
+                </div>
+                <h3>Image Composition</h3>
+                <p>
+                  A systems view of how visual elements are selected, placed, blended, and kept
+                  coherent across images and video.
+                </p>
+                <div class="card-meta">
+                  <span>Living survey</span>
+                  <span>6 sections</span>
+                  <span>Updated Jul 2026</span>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <article class="survey-card is-ghost">
+            <div class="ghost-inner">
+              <span class="ghost-plus" aria-hidden="true">+</span>
+              <strong>The next domain starts here.</strong>
+              <span>Copy the survey template, rename its folder, and write.</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="principles-section" aria-labelledby="principles-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Publishing model</p>
+            <h2 id="principles-title">Built to grow with the research.</h2>
+          </div>
+        </div>
+        <div class="principle-grid">
+          <article class="principle">
+            <span class="principle-index">i.</span>
+            <h3>Folder-first</h3>
+            <p>
+              Every survey owns its page and media assets. No database or framework is required.
+            </p>
+          </article>
+          <article class="principle">
+            <span class="principle-index">ii.</span>
+            <h3>Visual by default</h3>
+            <p>
+              Diagrams open full-screen, video plays inline, and captions preserve the research
+              context.
+            </p>
+          </article>
+          <article class="principle">
+            <span class="principle-index">iii.</span>
+            <h3>Made for reading</h3>
+            <p>
+              A sticky outline, scroll progress, and direct section links keep long surveys easy
+              to navigate.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© <span data-current-year></span> Domain Surveys. Notes are revised as fields move.</p>
+      <a href="https://github.com/khengyun/domain-surveys">GitHub ↗</a>
+    </footer>
+
+    <script src="./assets/site.js"></script>
+  </body>
+</html>
