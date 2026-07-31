@@ -318,7 +318,6 @@
                 data-node-index="A.03"
                 data-node-title="Generative composition"
                 data-node-description="GAN or diffusion insertion with identity preservation."
-                data-node-diagram="./assets/generative-composition.drawio"
               >
                 <span class="method-node-top">
                   <span class="method-index">A.03</span>
@@ -328,7 +327,30 @@
                 <span class="method-node-description"
                   >GAN or diffusion insertion with identity preservation.</span
                 >
-                <span class="method-node-action">Open visual <span aria-hidden="true">↗</span></span>
+                <span class="method-node-action"
+                  >Open research board <span aria-hidden="true">↗</span></span
+                >
+                <span
+                  hidden
+                  data-node-image-item
+                  data-image-src="./assets/generative-composition-training-scale.png"
+                  data-image-label="Diffusion composition · Training-scale comparison"
+                  data-image-alt="Generative image composition examples comparing the proposed model trained on thirty thousand samples with variants trained on three hundred and three thousand samples."
+                ></span>
+                <span
+                  hidden
+                  data-node-image-item
+                  data-image-src="./assets/generative-composition-component-ablation.png"
+                  data-image-label="Component ablation · InitBlend, ImageCLIP, and inversion"
+                  data-image-alt="Ablation results for generative composition showing a baseline and variants without initial blending, ImageCLIP conditioning, or inversion for architecture and warrior insertions."
+                ></span>
+                <span
+                  hidden
+                  data-node-image-item
+                  data-image-src="./assets/generative-composition-controlnet-ablation.png"
+                  data-image-label="Structural control · ControlNet ablation"
+                  data-image-alt="Generative composition examples comparing results without and with ControlNet for inserting a humanoid figure and a panda into target scenes."
+                ></span>
               </button>
             </div>
           </section>
@@ -373,6 +395,13 @@
                   data-image-src="./assets/foreground-object-placement.png"
                   data-image-label="Object placement · Generation and assessment"
                   data-image-alt="Five examples comparing TERSE, PlaceNet, SOPA, and FOPA foreground object placement results from the same background and segmented foreground inputs."
+                ></span>
+                <span
+                  hidden
+                  data-node-image-item
+                  data-image-src="./assets/object-placement-method-comparison.png"
+                  data-image-label="Placement generation · Method comparison"
+                  data-image-alt="Object placement examples comparing TopNet, PlaceNet, GracoNet, TERSE, and the proposed method when inserting a zebra, monkey, or sailboat into a target scene."
                 ></span>
               </button>
               <button
