@@ -28,7 +28,7 @@ class PageParser(HTMLParser):
         if element_id:
             self.ids.add(element_id)
 
-        for attribute in ("href", "src"):
+        for attribute in ("href", "src", "data-image-src"):
             value = values.get(attribute)
             if value:
                 self.references.append((attribute, value))

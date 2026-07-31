@@ -81,6 +81,22 @@ change or image export:
 To use another draw.io filename, update that node's `data-node-diagram` value in
 `image-composition/index.html`.
 
+A visual node can instead act as a draggable research board containing one or more raster figures.
+Add one hidden `data-node-image-item` element per figure inside the node:
+
+```html
+<span
+  hidden
+  data-node-image-item
+  data-image-src="./assets/example.png"
+  data-image-label="Matting · Background-guided alpha matting"
+  data-image-alt="Describe the research figure."
+></span>
+```
+
+All image items in that node are rendered together. Drag the board to pan and use its
+`− / Fit / +` controls to zoom.
+
 ### Update the main taxonomy
 
 The native source is `image-composition/assets/image-composition-taxonomy.drawio`. After editing

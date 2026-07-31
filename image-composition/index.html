@@ -10,7 +10,7 @@
     <meta name="theme-color" content="#f7f7f3" />
     <title>Image Composition — Domain Surveys</title>
     <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="../assets/styles.css?v=20260731-1" />
+    <link rel="stylesheet" href="../assets/styles.css?v=20260731-3" />
     <script>
       (() => {
         const saved = localStorage.getItem("domain-surveys-theme");
@@ -344,19 +344,28 @@
                 type="button"
                 data-visual-node
                 data-node-index="B.01"
-                data-node-title="Object placement"
-                data-node-description="Location, scale, support, and semantic context."
-                data-node-diagram="./assets/object-placement.drawio"
+                data-node-title="Foreground object placement"
+                data-node-description="Generate or assess plausible foreground locations and scales from geometric, support, and semantic compatibility with the background."
               >
                 <span class="method-node-top">
                   <span class="method-index">B.01</span>
                   <span class="method-node-icon" aria-hidden="true">+</span>
                 </span>
-                <span class="method-node-title">Object placement</span>
+                <span class="method-node-title">Foreground object placement</span>
                 <span class="method-node-description"
-                  >Location, scale, support, and semantic context.</span
+                  >Placement generation and assessment for location, scale, support, and semantic
+                  compatibility.</span
                 >
-                <span class="method-node-action">Open visual <span aria-hidden="true">↗</span></span>
+                <span class="method-node-action"
+                  >Open research board <span aria-hidden="true">↗</span></span
+                >
+                <span
+                  hidden
+                  data-node-image-item
+                  data-image-src="./assets/foreground-object-placement.png"
+                  data-image-label="Object placement · Generation and assessment"
+                  data-image-alt="Five examples comparing TERSE, PlaceNet, SOPA, and FOPA foreground object placement results from the same background and segmented foreground inputs."
+                ></span>
               </button>
               <button
                 class="method-node"
@@ -406,7 +415,6 @@
                 data-node-index="B.04"
                 data-node-title="Foreground search &amp; extraction"
                 data-node-description="Source selection, segmentation, matting, and amodal masks."
-                data-node-diagram="./assets/foreground-extraction.drawio"
               >
                 <span class="method-node-top">
                   <span class="method-index">B.04</span>
@@ -416,7 +424,16 @@
                 <span class="method-node-description"
                   >Source selection, segmentation, matting, and amodal masks.</span
                 >
-                <span class="method-node-action">Open visual <span aria-hidden="true">↗</span></span>
+                <span class="method-node-action"
+                  >Open research board <span aria-hidden="true">↗</span></span
+                >
+                <span
+                  hidden
+                  data-node-image-item
+                  data-image-src="./assets/background-matting.png"
+                  data-image-label="Matting · Background-guided alpha matting"
+                  data-image-alt="A background matting pipeline using images captured with and without the subject to predict an alpha matte and place the extracted person into a new background."
+                ></span>
               </button>
             </div>
           </section>
@@ -596,6 +613,14 @@
               hidden
             ></div>
             <div
+              class="node-dialog-image-viewport"
+              data-node-dialog-image-viewport
+              aria-label="Draggable research image board"
+              hidden
+            >
+              <div class="node-dialog-image-stage" data-node-dialog-image-stage></div>
+            </div>
+            <div
               class="node-dialog-controls"
               data-node-dialog-controls
               role="group"
@@ -640,7 +665,7 @@
             <h2 id="node-dialog-title" data-node-dialog-title>Visual node</h2>
             <p class="node-dialog-description" data-node-dialog-description></p>
             <div class="node-dialog-asset">
-              <span>Draw.io asset</span>
+              <span data-node-dialog-asset-label>Draw.io asset</span>
               <code data-node-dialog-file>assets/node.drawio</code>
             </div>
           </div>
@@ -650,6 +675,6 @@
     </dialog>
 
     <script src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
-    <script src="../assets/site.js?v=20260731-1"></script>
+    <script src="../assets/site.js?v=20260731-3"></script>
   </body>
 </html>
